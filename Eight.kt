@@ -1,19 +1,16 @@
 fun main(){
-    var str="ab9cd11ed3ka44"
-    var k=str.map { it.toChar() in '0'..'9' }
-    var idx=0
+    val str="ab9cd11ed3ka45"
     var sum=0
-    for(i in str){
-        if(idx==str.length-1)
-            break
-        else if(k[idx] && k[idx+1]){
-            var ab = "$i${str[idx+1]}"
-            sum+=Integer.parseInt(ab)
+    var i=0
+    while(i in str.indices){
+        if(str[i] in '0'..'9' && str[i+1] in '0'..'9'){
+            sum+=Integer.parseInt("${str[i]}${str[i+1]}")
+            i += 1
         }
-        else if(k[idx]){
-            sum += Integer.parseInt("$i")
+        else if(str[i] in '0'..'9'){
+            sum+=Integer.parseInt("${str[i]}")
         }
-        idx++
+        i++
     }
     println(sum)
 }
